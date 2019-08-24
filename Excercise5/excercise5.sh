@@ -2,7 +2,7 @@
 
 docker network create mynet
 
-docker container run -d --network mynet --name db --env-file db.env postgres
+docker container run -d --network mynet --name db --env-file db.env --volume db_data:/var/lib/postgresql/data postgres
 
 docker container run -d --network mynet --network-alias webapp --name app1 --env-file app.env jfahrer/demo_web_app:latest
 
