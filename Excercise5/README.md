@@ -57,4 +57,6 @@ docker container stop $(docker container ls -q)
 docker container rm $(docker container ls -aq)
 
 docker network rm mynet
+
+docker volume rm db_data
 ```
