@@ -2,8 +2,8 @@
 
 ## Description
 
-This excercise builds on what was done on [_Excercise 4_](https://github.com/ewajs/learn-docker-online/tree/master/Excercise4), please check that out first.
-A database, multiple web servers connecting to it, and an nginx load balancer forwarding requests between the Docker host and the webservers will be spin up in three different containers, interconnected by a User Defined Network.
+This excercise builds on what was done on [**Excercise 4**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise4), please check that out first.
+A database, multiple web servers connecting to it, and an nginx load balancer forwarding requests between the Docker host and the webservers will be spun up in three different containers, interconnected by a User Defined Network.
 This will make use of the nginx load balancer image `ewajs/lb:latest` built in the previous excercise (same Dockerfile and startup script from Excercise 4 are provided to make this self contained).
 
 ## Changes from Excercise 4
