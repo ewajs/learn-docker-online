@@ -1,0 +1,18 @@
+version: "3.3"
+
+services:
+  pg:
+    image: postgres:9.6-alpine
+    env-file:
+      - db.env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  webapp:
+    image: jfahrer/demo_web_app:latest
+    env-file:
+      - app.env
+    ports:
+      - 80:9292
+
+volumes: pg_data:
