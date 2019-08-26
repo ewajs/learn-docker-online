@@ -1,6 +1,6 @@
 # Excercise 7
 
-In this excercise, a postgres database, a web server, and a load balancer are spun up, both are configured by enviornment variables listed in the file called `.env`. The `lb` and `webapp` containers will be created with **dependencies** on `pg` and `webapp` containers respectively. This means, that `docker-compose up` will create the containers in the correct order, however, this does not ensure that, for example, `pg` is **ready** for `webapp` to depend on, that needs to be handled by the container logic itself, docker-compose will only ensure the order of creation.
+In this excercise, a postgres database, a web server, and a load balancer are spun up, both are configured by enviornment variables listed in the file called `.env`. The `lb` and `webapp` containers will be created with **dependencies** on `webapp` and `pg` containers respectively. This means, that `docker-compose up` will create the containers in the correct order, however, this does not ensure that, for example, `pg` is **ready** for `webapp` to depend on, that needs to be handled by the container logic itself, docker-compose will only ensure the order of creation.
 The containers are spun up, configured and interconnected via **Docker Compose**.
 Docker compose will:
 
