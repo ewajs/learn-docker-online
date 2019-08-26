@@ -18,5 +18,5 @@ The server should be accessible via the host's port 80.
 To stop:
 
 ```
-docker-compose up
+docker-compose down
 ```
