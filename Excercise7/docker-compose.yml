@@ -1,0 +1,34 @@
+version: "3.3"
+
+services:
+  pg:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  webapp:
+    image: jfahrer/demo_web_app:wait_for_pg
+    depends_on: 
+      - pg
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_HOST
+
+  lb:
+    image: ewajs/lb:latest
+    depends_on: 
+      - webapp
+    environment:
+      - PROXY_UPSTREAM
+    ports:
+      - 80:80
+
+
+volumes:
+  pg_data:
