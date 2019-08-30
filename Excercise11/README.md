@@ -1,6 +1,6 @@
 # Excercise 11
 
-This excercise builds up on what was done in [**Excercise 11**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise10). In this case, no further changes to the image or the `docker-compose.yml` were performed. The app's code is injected into the container at startup via a Bind Volume.
+This excercise builds up on what was done in [**Excercise 10**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise10). In this case, no further changes to the image or the `docker-compose.yml` were performed. The app's code is injected into the container at startup via a Bind Volume.
 
 The only addition is that the app now logs Client IP, Path, Container Hostname and Timestamp at each request to a file inside the container located in `/tmp/requests.txt`.
 
