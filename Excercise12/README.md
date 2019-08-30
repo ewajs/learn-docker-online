@@ -9,7 +9,7 @@ Docker Compose will:
 - Create a User Defined Network
 - Create a database container based off the image `postgres:9.6-alpine`, mounting the volume to it. The container will initialize its database with a `requests` table.
 - Create a webserver container based off the image `ewajs/flask:latest`, depending on the database container. The `/app` directory in the host will be mounted to the `/app` directory in the container to override the image's source code.
-- Expose port 80 of the load balancer container to port 80 of the host.
+- Expose port 80 of the webserver container to port 80 of the host.
 
 ## Database Container
 
