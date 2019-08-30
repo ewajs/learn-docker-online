@@ -1,8 +1,15 @@
 # Excercise 12
 
-This excercise builds up on what was done in [**Excercise 11**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise11).
+This excercise builds up on what was done in [**Excercise 11**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise11). Adding a database container to log the requests to the web server.
 
-In this case a web server and a database container will be spun up. With the web server having a dependency to the database via Docker Compose `depends_on`.
+Docker Compose will:
+
+- Build/pull the image `ewajs/flask:latest` with web server code and dependencies.
+- Create a Docker Volume
+- Create a User Defined Network
+- Create a database container based off the image `postgres:9.6-alpine`, mounting the volume to it. The container will initialize its database with a `requests` table.
+- Create a webserver container based off the image `ewajs/flask:latest`, depending on the database container. The `/app` directory in the host will be mounted to the `/app` directory in the container to override the image's source code.
+- Expose port 80 of the load balancer container to port 80 of the host.
 
 ## Database Container
 
