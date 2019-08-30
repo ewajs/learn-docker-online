@@ -18,7 +18,7 @@ The Postgres database is initialized by the file `db/init.sql` by passing it as 
 ## Webserver container
 
 The webserver image can be built from the provided Dockerfile at `app/Dockerfile`. This image, based from `python:3.6-alpine` not only copies the source code of the application but also installs the necessary dependencies to connect to a postgres database. The web server is configured by environment variables in the `.env` files as specified in the `docker-compose.yml` file. Also, the `app` folder is mounted onto the container as a bind mount to allow for quick testing of the application code.
-The webserver will log requests to the database and output a JSON containing the full request log, including the one just made. Requests will persist in the database since the data is stored in a Docker Volume and mounted every time a new database container instance is created.
+The webserver will log requests to the database and output dynamic HTML with the last 25 requests, including the one just made. Requests will persist in the database since the data is stored in a Docker Volume and mounted every time a new database container instance is created.
 
 ## Starting the Services
 

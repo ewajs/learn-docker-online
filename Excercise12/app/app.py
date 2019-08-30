@@ -1,5 +1,5 @@
 import datetime as dt
-from flask import Flask, jsonify, request
+from flask import Flask, render_template, request
 from os import getenv
 import psycopg2
 import socket
@@ -27,10 +27,13 @@ def hello_world():
             VALUES (%s, %s, %s, %s);""", (client_ip, path, hostname, timestamp))
 
         with conn.cursor() as c:
-            c.execute("""SELECT * FROM requests;""")
-            ret = c.fetchall()
+            c.execute("""SELECT ip, path, host, requested_at 
+                        FROM requests 
+                        ORDER BY id DESC
+                        LIMIT 25;""")
+            reqs = c.fetchall()
 
-    return jsonify(ret)
+    return render_template("index.html", reqs=reqs)
 
 
 if __name__ == '__main__':
