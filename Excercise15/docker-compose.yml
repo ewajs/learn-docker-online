@@ -1,0 +1,42 @@
+version: "3.3"
+
+services:
+  webapp:
+    image: ewajs/flask:latest
+    build:
+      context: .
+      dockerfile: ./app/Dockerfile
+    depends_on:
+      - pg
+    volumes:
+      - ./app:/app
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_HOST
+
+  pg:
+    image: postgres:9.6-alpine
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - pg_data:/var/lib/postgresql/data
+
+  lb:
+    image: ewajs/lb:latest
+    build:
+      context: ./lb
+      dockerfile: ./Dockerfile
+    depends_on:
+      - webapp
+    environment:
+      - PROXY_UPSTREAM
+    ports:
+      - 80:80
+
+volumes:
+  pg_data:
