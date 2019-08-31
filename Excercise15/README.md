@@ -1,6 +1,6 @@
-# Excercise 13
+# Excercise 15
 
-This excercise builds up on what was done in [**Excercise 12**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise12). Adding an ngnix Load Balancer and scaling up the webservers to 3 replicas.
+This excercise builds up on what was done in [**Excercise 13**](https://github.com/ewajs/learn-docker-online/tree/master/Excercise13). In this case, the nginx load balancer is configured via an `ENTRYPOINT` instead of the `CMD` instruction in the `Dockerfile`.
 
 Docker Compose will:
 
@@ -9,7 +9,7 @@ Docker Compose will:
 - Create a User Defined Network
 - Create a database container based off the image `postgres:9.6-alpine`, mounting the volume to it. The container will initialize its database with a `requests` table.
 - Create 3 webserver containers based off the image `ewajs/flask:latest`, depending on the database container. The `/app` directory in the host will be mounted to the `/app` directory in the container to override the image's source code.
-- Create a load balancer nginx container, depending on the webserver containers, pointing it to the webserver container replicas.
+- Create a load balancer nginx container basef off the image `ewajs/lb:latest`, depending on the webserver containers, pointing it to the webserver container replicas.
 - Expose port 80 of the load balancer container to port 80 of the host.
 
 ## Database Container
@@ -51,4 +51,4 @@ Docker Compose will handle all cleanup _except_ for the Database Docker Volume, 
 docker volume rm VOLUME_NAME
 ```
 
-Where `VOLUME_NAME` will be the mounted volume name, in this case `excercise12_pg_data`
+Where `VOLUME_NAME` will be the mounted volume name, in this case `excercise15_pg_data`
